@@ -21,13 +21,19 @@ public class TinController {
     @GetMapping("/danh-sach-the-loai")
     public String listTheLoai(Model model) {
         model.addAttribute("listTheLoai", theLoaiRepo.findAll());
-        return "the_loai_list"; // Sẽ tạo file the_loai_list.html
+        return "the_loai_list"; 
     }
 
     // 2. Hiển thị tin theo thể loại
     @GetMapping("/the-loai/{id}")
     public String listTinByTheLoai(@PathVariable Integer id, Model model) {
         model.addAttribute("listTin", tinRepo.findByTheLoaiTin_Id(id));
-        return "tin_list"; // Dùng lại file tin_list.html đã có
+        return "tin_list"; 
+    }
+    // 3. Xem chi tiết một bài tin theo mã tin (ID)
+    @GetMapping("/tin/{id}")
+    public String getChiTietTin(@PathVariable Integer id, Model model) {       
+        model.addAttribute("tin", tinRepo.findById(id).orElse(null));
+        return "tin_detail"; 
     }
 }
