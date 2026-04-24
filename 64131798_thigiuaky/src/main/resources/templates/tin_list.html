@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tin Tức - 64131798</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2 class="mb-4 text-danger">DANH SÁCH TIN TỨC</h2>
+    <table class="table table-hover table-striped border">
+        <thead class="table-dark">
+            <tr>
+                <th>STT</th>
+                <th>Tiêu đề</th>
+                <th>Nội dung tóm tắt</th>
+                <th>Thể loại</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tin, state : ${listTin}">
+                <td th:text="${state.count}"></td>
+                <td th:text="${tin.tieuDe}" class="fw-bold"></td>
+                <td th:text="${tin.noiDung}"></td>
+                <td th:text="${tin.theLoaiTin.tenTheLoai}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
